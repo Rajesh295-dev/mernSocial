@@ -36,10 +36,18 @@ io.on("connection", (socket) => {
     //send and receive the messages
     socket.on("sendMessage", ({ senderId, receiverId, text }) => {
         const user = getUser(receiverId);
-        io.to(user.socketId).emit("getMessage", {
-            senderId,
-            text,
-        });
+        if (user && user.socketId) {
+            io.to(user.socketId).emit("getMessage", {
+                senderId,
+                text,
+            });
+        } else {
+            console.log(`User with ID ${receiverId} not found or not connected.`);
+        }
+        // io.to(user.socketId).emit("getMessage", {
+        //     senderId,
+        //     text,
+        // });
     });
 
 

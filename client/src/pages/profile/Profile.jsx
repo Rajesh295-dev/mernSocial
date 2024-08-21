@@ -13,14 +13,14 @@ export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
   const username = useParams().username;
-  console.log("this should be useParams", username);
+  //console.log("this should be useParams", username);
 
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users?username=${username}`);
       setUser(res.data);
-      console.log("fetched response", res);
-      console.log("this shoud be fetchedd userr", user);
+      //console.log("fetched response", res);
+      //console.log("this shoud be fetchedd userr", user);
     };
     fetchUser();
   }, [username]);

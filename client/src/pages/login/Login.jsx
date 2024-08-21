@@ -7,22 +7,23 @@ import { AuthContext } from "../../context/AuthContext";
 export default function Login() {
   const email = useRef();
   const password = useRef();
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
+  // const { user, isFetching, error, dispatch } = useContext(AuthContext);
   const handleClick = (e) => {
     e.preventDefault();
     loginCall(
       { email: email.current.value, password: password.current.value },
       dispatch
     );
-    console.log(user);
+    //console.log(user);
   };
   return (
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Gautamsocial</h3>
+          <h3 className="loginLogo">GautamSocial</h3>
           <span className="loginDesc">
-            Connect with your friends and the world with Gautamsocial.
+            Connect with your friends and the world with GautamSocial.
           </span>
         </div>
 

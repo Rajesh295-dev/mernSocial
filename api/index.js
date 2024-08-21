@@ -10,12 +10,21 @@ const morgan = require("morgan");
 const multer = require("multer");
 
 const cors = require("cors");
+
+
 const bodyParser = require('body-parser');
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
+//new routes
+// const userRoute = require("./routes/user.route");
+// const authRoute = require("./routes/auth.route");
+// const postRoute = require("./routes/post.route");
+// const conversationRoute = require("./routes/conversations.route");
+// const messageRoute = require("./routes/messages.route");
+
 const { clog } = require("./util/clog");
 
 dotenv.config();

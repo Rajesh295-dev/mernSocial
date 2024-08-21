@@ -6,7 +6,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { format } from "timeago.js";
+// import { moment } from "moment";
+import moment from "moment";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -23,11 +24,17 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
-      console.log("fetched user res", res);
-      console.log("this shoud be usernamee", user);
+      try {
+        const res = await axios.get(`/users?userId=${post.userId}`);
+        setUser(res.data);
+      } catch (err) {
+        console.log("Error fetching user data:", err);
+      }
+      // const res = await axios.get(`/users?userId=${post.userId}`);
+      // // console.log("fetched user res", res);
+      // // console.log("this shoud be usernamee", user);
 
-      setUser(res.data);
+      // setUser(res.data);
     };
     fetchUser();
   }, [post.userId]);
@@ -59,7 +66,8 @@ export default function Post({ post }) {
               />
             </Link>
             <span className="postUsername">{user.username}</span>
-            <span className="postDate">{format(post.createdAt)} </span>
+            <span className="postDate">{moment(post.createdAt).fromNow()}</span>
+            {/* <span className="postDate">{format(post.createdAt)} </span> */}
           </div>
           <div className="postTopRight">
             <MoreVert />

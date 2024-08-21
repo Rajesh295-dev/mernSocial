@@ -1,5 +1,5 @@
 import "./message.css";
-import { format } from "timeago.js";
+import moment from "moment";
 
 export default function Message({ message, own }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -13,7 +13,7 @@ export default function Message({ message, own }) {
         />
         <p className="messageText">{message.text}</p>
       </div>
-      <div className="meesageBottom"> {format(message.createdAt)}</div>
+      <div className="postDate">{moment(message.createdAt).fromNow()}</div>
     </div>
   );
 }
