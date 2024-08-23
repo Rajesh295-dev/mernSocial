@@ -18,12 +18,8 @@ const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
-//new routes
-// const userRoute = require("./routes/user.route");
-// const authRoute = require("./routes/auth.route");
-// const postRoute = require("./routes/post.route");
-// const conversationRoute = require("./routes/conversations.route");
-// const messageRoute = require("./routes/messages.route");
+const storyRoute = require("./routes/stories");
+
 
 const { clog } = require("./util/clog");
 
@@ -73,6 +69,7 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
+app.use("/api/stories", storyRoute); // Add this line
 
 app.listen(3307, () => {
     console.log("Backend server is Running!!");

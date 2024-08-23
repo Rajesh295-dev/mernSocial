@@ -33,7 +33,6 @@ export default function Post({ post }) {
       // const res = await axios.get(`/users?userId=${post.userId}`);
       // // console.log("fetched user res", res);
       // // console.log("this shoud be usernamee", user);
-
       // setUser(res.data);
     };
     fetchUser();
@@ -49,6 +48,7 @@ export default function Post({ post }) {
     setIsLiked(!isLiked);
     console.log(isLiked);
   };
+
   return (
     <div className="post">
       <div className="postWrapper">

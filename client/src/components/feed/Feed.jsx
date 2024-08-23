@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
+import Stories from "../../components/stories/Stories";
 import "./feed.css";
 import axios from "axios";
 import { useContext } from "react";
@@ -29,6 +30,7 @@ export default function Feed({ username }) {
   return (
     <div className="feed">
       <div className="feedWrapper">
+        <Stories className="stories" />
         {(!username || username === user.username) && <Share />}
 
         {posts &&

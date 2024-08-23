@@ -1,0 +1,60 @@
+.stories {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.storiesWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.story {
+  position: relative;
+  width: 120px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.storyProfileImg,
+.storyImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storyUsername {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-weight: 500;
+}
+
+.addStoryButton {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  color: white;
+  background-color: #5271ff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.storiesError,
+.storiesLoading {
+  margin-left: 10px;
+  font-size: 16px;
+  color: gray;
+}
