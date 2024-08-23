@@ -32,6 +32,9 @@ const StorySchema = new mongoose.Schema(
         img: {
             type: String,
         },
+        name: {
+            type: String,
+        },
     },
     { timestamps: true } // Automatically adds createdAt and updatedAt fields
 );

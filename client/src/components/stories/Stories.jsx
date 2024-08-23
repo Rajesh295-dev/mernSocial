@@ -20,27 +20,12 @@ export default function Stories({ currentUserId }) {
     },
   });
 
-  // const [stories, setStories] = useState([]);
-  // useEffect(() => {
-  //   const fetchStories = async () => {
-  //     try {
-  //       const res = await axios.get(`/stories/${currentUserId}`);
-  //       setStories(res.data);
-  //     } catch (err) {
-  //       console.error("Failed to fetch stories:", err);
-  //     }
-  //   };
-
-  //   if (currentUserId) {
-  //     fetchStories();
-  //   }
-  // }, [currentUserId]);
-
   const [file, setFile] = useState(null);
 
   const submitHandler = async () => {
     const newStory = {
       userId: user._id,
+      name: user.username,
     };
 
     if (file) {
@@ -78,7 +63,7 @@ export default function Stories({ currentUserId }) {
             }
             alt=""
           />
-          <span className="storyUsername">{user.username}</span>
+          <span className="createStory"> Create Story</span>
           <button
             className="addStoryButton"
             onClick={() => document.getElementById("fileInput").click()}
