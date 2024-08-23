@@ -1,84 +1,3 @@
-/* .stories {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.storiesWrapper {
-  display: flex;
-  gap: 10px;
-}
-
-
-.story {
-  position: relative;
-  width: 120px;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.storyProfileImg,
-.storyImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.createStory {
-  position: absolute;
-  bottom: 10px;
-  left: 15px;
-  color: white;
-  font-weight: 500;
-}
-
-.addStoryButton {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  color: white;
-  background-color: #5271ff;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.storyUsername {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: white;
-  font-weight: 500;
-}
-
-.storiesError,
-.storiesLoading {
-  margin-left: 10px;
-  font-size: 16px;
-  color: gray;
-} */
-
-/* .stories {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  justify-content: space-between;
-  overflow-x: auto; 
-  white-space: nowrap; 
-  padding-bottom: 10px; 
-  scrollbar-width: thin; 
-     }  */
 .stories {
   display: flex;
   overflow-x: auto;
@@ -108,7 +27,7 @@
 .story {
   display: inline-block;
   position: relative;
-  width: 120px;
+  width: 25%;
   height: 200px;
   border-radius: 10px;
   overflow: hidden;
