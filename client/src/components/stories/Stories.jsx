@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export default function Stories() {
+export default function Stories({ currentUserId }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useContext(AuthContext);
 
@@ -12,9 +12,29 @@ export default function Stories() {
     queryKey: ["stories"],
     queryFn: () =>
       axios.get("/stories").then((res) => {
+        console.log("Response data:", res.data); // Debugging
         return res.data;
       }),
+    if(error) {
+      console.error("Error fetching stories:", error);
+    },
   });
+
+  // const [stories, setStories] = useState([]);
+  // useEffect(() => {
+  //   const fetchStories = async () => {
+  //     try {
+  //       const res = await axios.get(`/stories/${currentUserId}`);
+  //       setStories(res.data);
+  //     } catch (err) {
+  //       console.error("Failed to fetch stories:", err);
+  //     }
+  //   };
+
+  //   if (currentUserId) {
+  //     fetchStories();
+  //   }
+  // }, [currentUserId]);
 
   const [file, setFile] = useState(null);
 
@@ -80,8 +100,16 @@ export default function Stories() {
           <span className="storiesLoading">Loading...</span>
         ) : (
           data.map((story) => (
-            <div className="story" key={story.id}>
-              <img className="storyImg" src={story.img} alt="" />
+            <div className="story" key={story._id}>
+              <img
+                className="storyImg"
+                src={
+                  user.profilePicture
+                    ? PF + story.img
+                    : PF + "person/profileAvatar.png"
+                }
+                alt=""
+              />
               <span className="storyUsername">{story.name}</span>
             </div>
           ))

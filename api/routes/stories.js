@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { Story } = require("../models/Story");
-// const mongoose = require("mongoose");
+// const { Story } = require("../models/Story");
+const mongoose = require("mongoose");
 // CREATE a Story
 
 
@@ -19,25 +19,25 @@ const { Story } = require("../models/Story");
 // });
 
 // Define the Story model schema
-// const StorySchema = new mongoose.Schema(
-//     {
-//         userId: {
-//             type: String,
-//             required: true,
-//         },
-//         desc: {
-//             type: String,
-//             max: 500,
-//         },
-//         img: {
-//             type: String,
-//         },
-//     },
-//     { timestamps: true } // Automatically adds createdAt and updatedAt fields
-// );
+const StorySchema = new mongoose.Schema(
+    {
+        userId: {
+            type: String,
+            required: true,
+        },
+        desc: {
+            type: String,
+            max: 500,
+        },
+        img: {
+            type: String,
+        },
+    },
+    { timestamps: true } // Automatically adds createdAt and updatedAt fields
+);
 
 // // Create the Story model from the schema
-// const Story = mongoose.model("Story", StorySchema);
+const Story = mongoose.model("Story", StorySchema);
 
 // CREATE a Story
 router.post("/", async (req, res) => {
@@ -88,14 +88,28 @@ router.post("/", async (req, res) => {
 // });
 
 // // GET A Story
-// router.get("/:id", async (req, res) => {
+// Assuming you have an endpoint like '/stories/:userId'
+// router.get("/stories/:userId", async (req, res) => {
+//     console.log("story get req", req.body)
 //     try {
-//         const story = await Story.findById(req.params.id);
-//         res.status(200).json(story);
+//         const stories = await Story.find({ userId: req.params.userId });
+//         res.status(200).json(stories);
 //     } catch (err) {
 //         res.status(500).json(err);
 //     }
 // });
+
+// GET ALL Stories
+router.get('/', async (req, res) => {
+    console.log("story get req", req.body)
+    try {
+        const stories = await Story.find();
+        res.status(200).json(stories);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 
 // // GET User's Stories
 // router.get("/profile/:username", async (req, res) => {

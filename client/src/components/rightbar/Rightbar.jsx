@@ -24,7 +24,7 @@ export default function Rightbar({ user }) {
       try {
         const friendList = await axios.get("/users/friends/" + user._id);
         setFriends(friendList.data);
-        console.log("couldnot find", friendList);
+        //console.log("couldnot find", friendList);
       } catch (err) {
         //console.log("This is the eroor", err);
       }
@@ -103,25 +103,32 @@ export default function Rightbar({ user }) {
         </div>
         <h4 className="rightbarTitle">User Friends</h4>
         <div className="rightbarFollowings">
-          {friends.map((friend) => (
-            <Link
-              to={"/profile/" + friend.username}
-              style={{ textDecoration: "none" }}
-            >
-              <div className="rightbarFollowing">
-                <img
-                  src={
-                    friend.profilePicture
-                      ? PF + friend.profilePicture
-                      : PF + "person/1.jpeg"
-                  }
-                  alt=""
-                  className="rightbarFollowingImg"
-                />
-                <span className="rightbarFollowingName">{friend.username}</span>
-              </div>
-            </Link>
-          ))}
+          {friends.map((friend) => {
+            //console.log("Friend Info:", friend); // Log each friend's information
+
+            return (
+              <Link
+                to={"/profile/" + friend.username}
+                style={{ textDecoration: "none" }}
+                key={friend._id} // Adding a unique key prop
+              >
+                <div className="rightbarFollowing">
+                  <img
+                    src={
+                      friend.profilePicture
+                        ? PF + friend.profilePicture
+                        : PF + "person/1.jpeg"
+                    }
+                    alt=""
+                    className="rightbarFollowingImg"
+                  />
+                  <span className="rightbarFollowingName">
+                    {friend.username}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </>
     );
